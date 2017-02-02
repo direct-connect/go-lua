@@ -174,16 +174,16 @@ var stringLibrary = []RegistryFunction{
 		return 1
 	}},
 	// {"dump", ...},
-	{"find", func(l *State) int { return findHelper(l, true) }},
+	{"find", strFind},
 	{"format", func(l *State) int {
 		l.PushString(formatHelper(l, CheckString(l, 1), l.Top()))
 		return 1
 	}},
 	{"gmatch", gmatch},
-	// {"gsub", ...},
+	{"gsub", strGsub},
 	{"len", func(l *State) int { l.PushInteger(len(CheckString(l, 1))); return 1 }},
 	{"lower", func(l *State) int { l.PushString(strings.ToLower(CheckString(l, 1))); return 1 }},
-	// {"match", ...},
+	{"match", strMatch},
 	{"rep", func(l *State) int {
 		s, n, sep := CheckString(l, 1), CheckInteger(l, 2), OptString(l, 3, "")
 		if n <= 0 {
